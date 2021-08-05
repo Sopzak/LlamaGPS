@@ -1,7 +1,7 @@
 ﻿/* Provide sufficient contrast against white background */
-a {
+/*a {
   color: #0366d6;
-}
+}*/
 
 code {
   color: #E01A76;
@@ -11,4 +11,36 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+
+/*Footer*/
+.social-container {
+  padding: 25px;
+  text-align: center;
+  height: 40px;
+}
+
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  /*display: inline-block;*/
+}
+a.social:hover {
+  transform: translateY(-2px);
+}
+a.youtube {
+  color: #eb3223;
+}
+
+a.facebook {
+  color: #4968ad;
+}
+
+a.twitter {
+  color: #49a1eb;
+}
+
+a.instagram {
+  color: black;
 }
