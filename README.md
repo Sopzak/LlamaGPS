@@ -8,12 +8,12 @@ I'm another llama wanting to join the team.
 [Demo] (https://github.com/Sopzak/LlamaGPS).
 
 ## Project Structure
+The Unity and .Net projects are in different solutions, but in the same folder.
 
+## Futures Updates
 In this project, you have a structure to create more llamas for a team of llamas.
 The backend is in a .Net application with C# and React to create llamas via a Rest API.
 The Unity game takes the information from the API and puts the llamas on the island.
-The Unity and .Net projects are in different solutions, but in the same folder.
-
 ## Contact
 
 Linkin [https://www.linkedin.com/in/jesiel-sopzak](https://www.linkedin.com/in/jesiel-sopzak).
