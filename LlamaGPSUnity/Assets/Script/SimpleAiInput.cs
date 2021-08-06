@@ -9,34 +9,55 @@ public class SimpleAiInput : MonoBehaviour, IInput
     public Action<Vector3> OnMovementDirectionInput { get; set;}
 
     bool playerDetectionResult =false;
+    bool llamaPointerDetectionResult =false;
     public Transform eyesTransform;
     public Transform playerTransform;
+    public Transform llamaPointerTransform;
     public LayerMask playerLayer;
-    public float visionDistance, stoppingDistance = 1.2f;
+    public LayerMask LlamaPointLayer;
+    public float visionDistance, targetDistance, stoppingDistance = 1.2f;
+    public GameControler gamecontroler;
+    private bool lost = true;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //GetMovementInput();
-        //GetMovementDirection();
-        playerDetectionResult = DetectPlayer();
-        if(playerDetectionResult){
-            var directionToPlayer = playerTransform.position - transform.position;
+        llamaPointerDetectionResult = DetectLlamaPointer();
+        if(llamaPointerDetectionResult){
+            var directionToPlayer = llamaPointerTransform.position - transform.position;
             directionToPlayer = Vector3.Scale(directionToPlayer, Vector3.forward + Vector3.right);
             if(directionToPlayer.magnitude > stoppingDistance){
                 directionToPlayer.Normalize();
                 OnMovementInput?.Invoke(Vector2.up);
                 OnMovementDirectionInput?.Invoke(directionToPlayer);
                 return;
+            }else{
+                if(lost){
+                    lost = false;
+                    gamecontroler.findedLlama(gameObject);
+                }
+            }
+        }else{
+            playerDetectionResult = DetectPlayer();
+            if(playerDetectionResult){
+                var directionToPlayer = playerTransform.position - transform.position;
+                directionToPlayer = Vector3.Scale(directionToPlayer, Vector3.forward + Vector3.right);
+                if(directionToPlayer.magnitude > stoppingDistance){
+                    directionToPlayer.Normalize();
+                    OnMovementInput?.Invoke(Vector2.up);
+                    OnMovementDirectionInput?.Invoke(directionToPlayer);
+                    return;
+                }
             }
         }
+        
         OnMovementInput?.Invoke(Vector2.zero);
         OnMovementDirectionInput?.Invoke(transform.forward);
     }
@@ -51,12 +72,27 @@ public class SimpleAiInput : MonoBehaviour, IInput
         playerTransform = null;
         return false;
     }
+    private bool DetectLlamaPointer(){
+        Collider[] hitColliders = Physics.OverlapSphere(eyesTransform.position, targetDistance, LlamaPointLayer);
+        foreach (var collider in hitColliders)
+        {
+            llamaPointerTransform = collider.transform;
+            return true;
+        }
+        llamaPointerTransform = null;
+        return false;
+    }
 
     private void OnDrawGizmos(){
         Gizmos.color = Color.green;
-        if(playerDetectionResult){
-            Gizmos.color = Color.red;
+        if(llamaPointerDetectionResult){
+            Gizmos.color = Color.blue;
+        }else{
+            if(playerDetectionResult){
+                Gizmos.color = Color.red;
+            }
         }
+        
         Gizmos.DrawWireSphere(eyesTransform.position, visionDistance);
     }
 
