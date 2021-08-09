@@ -7,7 +7,7 @@ In this simple game, you need to find all the llamas on that island and place th
 
 I'm another llama wanting to join the team.
 
-[Demo] (https://master.d15c5dgfiphued.amplifyapp.com/).
+[Demo] (https://dev9086.d3mdbd17xa0oxr.amplifyapp.com/).
 
 ## Project Structure
 The Unity and .Net projects are in different solutions, but in the same folder.
