@@ -1,11 +1,13 @@
 # LlamaGPS
 
+[Project under maintenance]
+
 This project is a demonstration of my skills in React, C# and Unity 3D.
 In this simple game, you need to find all the llamas on that island and place them on the ZOO farm.
 
 I'm another llama wanting to join the team.
 
-[Demo] (https://github.com/Sopzak/LlamaGPS).
+[Demo] (https://master.d15c5dgfiphued.amplifyapp.com/).
 
 ## Project Structure
 The Unity and .Net projects are in different solutions, but in the same folder.
