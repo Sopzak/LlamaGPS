@@ -9,7 +9,7 @@ I'm another llama wanting to join the team.
 
 ![Llamas](/LlamaGPSUnity/Assets/Images/llama.gif)
 
-[Demo] (https://dev9086.d3mdbd17xa0oxr.amplifyapp.com/).
+[Demo] (https://prod.dd3su5j1ij55g.amplifyapp.com/).
 
 
 ## Video
